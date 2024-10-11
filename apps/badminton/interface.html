@@ -13,22 +13,24 @@
     <h1>Config</h1>
     <textarea id="configText" rows="10" cols="50"></textarea>
     <button onclick="updateConfig()">Update</button>
-
+    
+    <script src="../../core/lib/interface.js"></script>
     <script>
-        // Load initial content from "abc.config.json"
-        fetch('badminton.config.json')
-            .then(response => response.text())
-            .then(configContent => {
-                document.getElementById('configText').value = configContent;
+        function getPlayerList(){
+            Util.showModal("Loading Players...");
+            //var playerList = require('Storage').readJSON(configFileName, true) || ["You","Guest1","Guest2","Guest3","Guest4"];
+            var playerList = Util.readStorageJSON('badminton.config.json', players =>{
+            document.getElementById('configText').value = JSON.stringify(players);    
             })
-            .catch(error => console.error('Error loading config:', error));
-
-        // Function to update the config
-        function updateConfig() {
-            const newText = document.getElementById('configText').value;
-            // You can implement the logic to save newText back to "abc.config.json"
-            // For now, let's just log it to the console
-            alert('Updated config:', newText);
+            Util.hideModal();
+        }
+        function updateConfig(){
+            //Util.writeStorageJSON('badminton.config.json',);
+            //Util.writeStorage(filename,data, callback) 
+            Util.writeStorage('badminton.config.json',document.getElementById('configText').value , ()=>{Util.showModal("Done :)");}) ;
+        }
+        function onInit() {
+          getPlayerList();
         }
     </script>
 </body>
