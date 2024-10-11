@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Config</title>
+    <style>
+        /* Add any custom styling here */
+        /* For example, adjust font size, colors, etc. */
+    </style>
+</head>
+<body>
+    <h1>Config</h1>
+    <textarea id="configText" rows="10" cols="50"></textarea>
+    <button onclick="updateConfig()">Update</button>
+
+    <script>
+        // Load initial content from "abc.config.json"
+        fetch('badminton.config.json')
+            .then(response => response.text())
+            .then(configContent => {
+                document.getElementById('configText').value = configContent;
+            })
+            .catch(error => console.error('Error loading config:', error));
+
+        // Function to update the config
+        function updateConfig() {
+            const newText = document.getElementById('configText').value;
+            // You can implement the logic to save newText back to "abc.config.json"
+            // For now, let's just log it to the console
+            alert('Updated config:', newText);
+        }
+    </script>
+</body>
+</html>
