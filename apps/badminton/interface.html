@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Config</title>
+    <title>Config (not supporting chinese for some reason)</title>
     <style>
         /* Add any custom styling here */
         /* For example, adjust font size, colors, etc. */
@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1>Config</h1>
-    <textarea id="configText" rows="10" cols="50"></textarea>
+    <textarea id="configText" rows="50" cols="50"></textarea>
     <button onclick="updateConfig()">Update</button>
     
     <script src="../../core/lib/interface.js"></script>
@@ -20,7 +20,8 @@
             Util.showModal("Loading Players...");
             //var playerList = require('Storage').readJSON(configFileName, true) || ["You","Guest1","Guest2","Guest3","Guest4"];
             var playerList = Util.readStorageJSON('badminton.config.json', players =>{
-            document.getElementById('configText').value = JSON.stringify(players);
+            //document.getElementById('configText').value = JSON.stringify(players);
+                document.getElementById('configText').value = players.join("\n");
             })
             Util.hideModal();
         }
@@ -28,7 +29,9 @@
             //Util.writeStorageJSON('badminton.config.json',);
             //Util.writeStorage(filename,data, callback) 
             try{
-                var result = JSON.stringify(JSON.parse(document.getElementById('configText').value));
+                //var result = JSON.stringify(JSON.parse(document.getElementById('configText').value));
+                //Util.writeStorage('badminton.config.json',result , ()=>{Util.showModal("Done :)");}) ;
+                var result = JSON.stringify(document.getElementById('configText').value.split("\n"));
                 Util.writeStorage('badminton.config.json',result , ()=>{Util.showModal("Done :)");}) ;
             }
             catch{
