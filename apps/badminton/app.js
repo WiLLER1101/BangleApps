@@ -80,6 +80,7 @@ function score(inB){
 		Bangle.removeListener('touch',touchEvent);
 		Bangle.on('touch',returnTouchEvent);
 	}
+	
 }
 function drawResult(newStat){
 	var hotaru = [];
@@ -133,6 +134,8 @@ function updateFrame() {
   g.setColor("#FFCC00");
   g.drawCircle(xUnit*1.5,yUnit*1.5,xUnit);
   g.drawString("<",xUnit*1.5,yUnit*1.5);
+
+  require("Storage").writeJSON("badminton.cache.json", currentState);
 }
 function touchEvent (zone, e) {
   if (e.x > btnPos[0].x1 && e.x < btnPos[1].x2 && e.y > btnPos[0].y1 && e.y < btnPos[1].y2) {
