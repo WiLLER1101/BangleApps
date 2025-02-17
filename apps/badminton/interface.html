@@ -28,8 +28,8 @@
             //Util.writeStorageJSON('badminton.config.json',);
             //Util.writeStorage(filename,data, callback) 
             try{
-                JSON.stringify(JSON.parse(document.getElementById('configText').value));
-                Util.writeStorage('badminton.config.json',document.getElementById('configText').value , ()=>{Util.showModal("Done :)");}) ;
+                var result = JSON.stringify(JSON.parse(document.getElementById('configText').value));
+                Util.writeStorage('badminton.config.json',result , ()=>{Util.showModal("Done :)");}) ;
             }
             catch{
                 Util.showModal("Something went wrong when saving json.");
