@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        /* Add any custom styling here */
+        /* For example, adjust font size, colors, etc. */
+    </style>
+</head>
+<body>
+    <h1>Test</h1>    
+    <script src="../../core/lib/interface.js"></script>
+    <d id="TextRegion"></d>
+    <script>
+        function getCache(){
+          try{
+          Util.readStorageJSON('badminton.cache.json', data =>{
+            document.getElementById('TextRegion').value = data;
+          });
+          }
+          catch{
+            document.getElementById('TextRegion').value = "Waiting...";
+          }
+        }
+        
+        function onInit() {
+          setInterval(() => {
+            getCache();
+          }, 5000);
+        }
+    </script>
+</body>
+</html>
