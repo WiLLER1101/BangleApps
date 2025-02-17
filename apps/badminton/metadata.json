@@ -15,7 +15,8 @@
 		{"name":"badminton.img","url":"badminton.img"}
 	],
 	"data":[
-	{"name":"badminton.config.json","storageFile":true}
+	{"name":"badminton.config.json","storageFile":true},
+	{"name":"badminton.cache.json","storageFile":true}
 	]
 	
 }
