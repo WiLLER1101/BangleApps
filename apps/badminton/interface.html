@@ -20,7 +20,7 @@
             Util.showModal("Loading Players...");
             //var playerList = require('Storage').readJSON(configFileName, true) || ["You","Guest1","Guest2","Guest3","Guest4"];
             var playerList = Util.readStorageJSON('badminton.config.json','utf8', players =>{
-            document.getElementById('configText').value = JSON.stringify(players);    
+            document.getElementById('configText').value = E.fromUTF8(JSON.stringify(players));    
             })
             Util.hideModal();
         }
@@ -28,7 +28,7 @@
             //Util.writeStorageJSON('badminton.config.json',);
             //Util.writeStorage(filename,data, callback) 
             try{
-                var result = JSON.stringify(JSON.parse(document.getElementById('configText').value));
+                var result = E.toUTF8(JSON.stringify(JSON.parse(document.getElementById('configText').value)));
                 Util.writeStorage('badminton.config.json',result , ()=>{Util.showModal("Done :)");}) ;
             }
             catch{
