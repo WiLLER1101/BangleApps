@@ -136,6 +136,8 @@ function updateFrame() {
   g.drawString("<",xUnit*1.5,yUnit*1.5);
 
   require("Storage").writeJSON("badminton.cache.json", currentState);
+  Bluetooth.println(JSON.stringify(currentState));
+	
 }
 function touchEvent (zone, e) {
   if (e.x > btnPos[0].x1 && e.x < btnPos[1].x2 && e.y > btnPos[0].y1 && e.y < btnPos[1].y2) {
