@@ -74,7 +74,7 @@ function score(inB){
 		updateFrame();
 	}
 	else{
-		Bluetooth.println(JSON.stringify(currentState));
+		Bluetooth.println(JSON.stringify(newStat));
 		g.clear();
 		animateFrame = 0;
 		animeInt = setInterval(drawResult,200,newStat);
